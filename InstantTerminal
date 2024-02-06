@@ -1,6 +1,10 @@
+#Requires AutoHotkey v2.0
 
+;Header
 #Requires Autohotkey v2.0
 #SingleInstance Force
+#Include <Functions> ; library for personalized functions
+#Include <Paths> ;library for file locations and urls
 
 ;Gui Design
 
@@ -36,7 +40,7 @@ Hotkey("Enter",Destruction.Bind(,true),"On") ; adds {Enter} hotkey if user wants
 
 
 
-Terminal_1(Input) {
+Terminal_1(Input) { ; Handles one-word, unique location/url commands
 
     if Input==""
         return
@@ -54,7 +58,7 @@ Terminal_1(Input) {
     return 1
 }
 
-Terminal_2(Input) {
+Terminal_2(Input) { ; Handles function calls and Maps in Maps 
 
     if Input==""
         return
@@ -66,12 +70,14 @@ Terminal_2(Input) {
         prefix := SubStr(Input, 1, spacePos - 1)
         command := SubStr(Input, spacePos + 1)
     }
+    MsgBox(prefix)
+    MsgBox(command)
     
-    static FuncCalls := Map( 
-        "y", YTSearch.Bind(Input),
+    static FuncCalls := Map(  
+        "y", YTSearch.Bind(command), 
         )
 
-    GoThrough(FuncCalls,prefix)
+    GoThrough(FuncCalls,prefix) 
 
     Static Clrs := Map(
         "hex", "https://www.w3schools.com/colors/colors_hex.asp",
@@ -80,7 +86,11 @@ Terminal_2(Input) {
         "converter", "https://www.w3schools.com/colors/colors_converter.asp",
         "scheme", "https://www.w3schools.com/colors/colors_schemes.asp",
     )
+    static GPTs := Map(
+        "ahk", gptAHK,
+    )
     static Prefixes := Map(
+        "g", GPTs,
         "c", Clrs,
     )
 
@@ -109,5 +119,5 @@ GoThrough(Commands,command, SubCommands := Map.Call()){
 }
 
 YTSearch(input) {
-    Run("https://www.youtube.com/results?search_query=" . StrReplace(SubStr(input,3,StrLen(input)), A_Space, "+"))
+    Run("https://www.youtube.com/results?search_query=" StrReplace(input, A_Space, "+"))
 }
