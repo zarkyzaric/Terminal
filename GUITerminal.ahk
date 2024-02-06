@@ -51,12 +51,11 @@ Terminal_1(Input) {
     "fox", Firefox,
     "t", ahkTerminal,
     "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
-    "imi", IMI,
     "latex", "C:\Users\LEPALALA\Documents\ENV\Work\KaTeX.htm",
     "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
     "trans", "https://translate.google.com/",
     )
-    if !(Solos.Has(Input))
+    if !(Solos.Has(Input)) ; if it doesn't have corresponding key, it goes onto a next terminal
         return 0
     GoThrough(Solos,Input)
     return 1
@@ -90,8 +89,6 @@ Terminal_2(Input) {
     )
     static GPTs := Map(
         "ahk", gptAHK,
-        "ahkadvisor", GPT_AutoHotkeyAdvisor,
-        "autocorrect", ahkAutoCorrect,
     )
     static Prefixes := Map(
         "g", GPTs,
