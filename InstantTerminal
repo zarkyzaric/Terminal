@@ -70,8 +70,6 @@ Terminal_2(Input) { ; Handles function calls and Maps in Maps
         prefix := SubStr(Input, 1, spacePos - 1)
         command := SubStr(Input, spacePos + 1)
     }
-    MsgBox(prefix)
-    MsgBox(command)
     
     static FuncCalls := Map(  
         "y", YTSearch.Bind(command), 
