@@ -38,7 +38,7 @@ Hotkey("Enter",Destruction.Bind(,true),"On") ; adds {Enter} hotkey if user wants
 
 
 
-Terminal_1(Input) {
+Terminal_1(Input) { ; Handles one-word, unique location/url commands
 
     if Input==""
         return
@@ -61,7 +61,7 @@ Terminal_1(Input) {
     return 1
 }
 
-Terminal_2(Input) {
+Terminal_2(Input) { ; Handles function calls and Maps in Maps 
 
     if Input==""
         return
@@ -74,11 +74,11 @@ Terminal_2(Input) {
         command := SubStr(Input, spacePos + 1)
     }
     
-    static FuncCalls := Map( 
-        "y", YTSearch.Bind(Input),
+    static FuncCalls := Map(  
+        "y", YTSearch.Bind(command), 
         )
 
-    GoThrough(FuncCalls,prefix)
+    GoThrough(FuncCalls,prefix) 
 
     Static Clrs := Map(
         "hex", "https://www.w3schools.com/colors/colors_hex.asp",
