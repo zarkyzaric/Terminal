@@ -8,9 +8,9 @@
 
 myGui := Gui("AlwaysOnTop -caption")
 myGui.BackColor := "600000"
-myGui.SetFont("s17 q5 cffe6e6","Consolas")
-global Input := myGui.Add("Edit", "Background600000 -E0x200 Center x10 w377 h45")
-global WinID := myGui.Hwnd
+myGui.SetFont("s17 q5 cffe6e6","Consolas") 
+global Input := myGui.Add("Edit", "Background600000 -E0x200 Center x10 w377 h45") ; Adds an Input(Edit) Box in GUI
+global WinID := myGui.Hwnd ; Saving Window handle for destroying GUI
 myGui.Show("W400 H50 y20")
 
 ;Input Handling  and Gui's Destruction
