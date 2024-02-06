@@ -73,6 +73,8 @@ Terminal_2(Input) { ; Handles function calls and Maps in Maps
         prefix := SubStr(Input, 1, spacePos - 1)
         command := SubStr(Input, spacePos + 1)
     }
+    MsgBox(prefix)
+    MsgBox(command)
     
     static FuncCalls := Map(  
         "y", YTSearch.Bind(command), 
@@ -120,5 +122,5 @@ GoThrough(Commands,command, SubCommands := Map.Call()){
 }
 
 YTSearch(input) {
-    Run("https://www.youtube.com/results?search_query=" . StrReplace(SubStr(input,3,StrLen(input)), A_Space, "+"))
+    Run("https://www.youtube.com/results?search_query=" . StrReplace(input, A_Space, "+"))
 }
