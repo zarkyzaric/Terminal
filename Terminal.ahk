@@ -1,3 +1,5 @@
+#Requires AutoHotkey v2.0
+
 ;Header
 #Requires Autohotkey v2.0
 #SingleInstance Force
@@ -45,11 +47,6 @@ Terminal_1(Input) { ; Handles one-word, unique location/url commands
 
     static Solos := Map(
     "docs", A_MyDocuments,
-    "main", Main,
-    "sup", Startup,
-    "rem", RemNote,
-    "fox", Firefox,
-    "t", ahkTerminal,
     "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
     "latex", "C:\Users\LEPALALA\Documents\ENV\Work\KaTeX.htm",
     "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
@@ -73,8 +70,6 @@ Terminal_2(Input) { ; Handles function calls and Maps in Maps
         prefix := SubStr(Input, 1, spacePos - 1)
         command := SubStr(Input, spacePos + 1)
     }
-    MsgBox(prefix)
-    MsgBox(command)
     
     static FuncCalls := Map(  
         "y", YTSearch.Bind(command), 
@@ -122,5 +117,5 @@ GoThrough(Commands,command, SubCommands := Map.Call()){
 }
 
 YTSearch(input) {
-    Run("https://www.youtube.com/results?search_query=" . StrReplace(input, A_Space, "+"))
+    Run("https://www.youtube.com/results?search_query=" StrReplace(input, A_Space, "+"))
 }
