@@ -47,6 +47,7 @@ Terminal_1(Input) { ; Handles one-word, unique location/url commands
 
     static Solos := Map(
     "docs", A_MyDocuments,
+    "wa", "https://web.whatsapp.com/",
     "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
     "latex", "C:\Users\LEPALALA\Documents\ENV\Work\KaTeX.htm",
     "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
@@ -74,7 +75,10 @@ Terminal_2(Input) { ; Handles function calls and Maps in Maps
     }
     
     static FuncCalls := Map(  
-        "y", YTSearch.Bind(command), 
+        "y", YTSearch.Bind(command),
+        "git", GitRep.Bind(command),
+        "s", Search.Bind(command),
+        "url", UrlSearch.Bind(command),
         )
 
     GoThrough(FuncCalls,prefix) 
@@ -120,4 +124,13 @@ GoThrough(Commands,command, SubCommands := Map.Call()){
 
 YTSearch(input) {
     Run("https://www.youtube.com/results?search_query=" StrReplace(input, A_Space, "+"))
+}
+GitRep(input){
+    Run("https://github.com/zarkyzaric/" . input)
+}
+Search(input){
+    Run("https://duckduckgo.com/?t=ffab&q=" . StrReplace(input, A_Space, "+") . "&atb=v403-1&ia=web")
+}
+UrlSearch(input){
+    Run(input)
 }
