@@ -49,9 +49,7 @@ Terminal_1(Input) { ; Handles one-word, unique location/url commands
     "sup", Startup,
     "rem", RemNote,
     "fox", Firefox,
-    "t", ahkTerminal,
-    "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
-    "latex", "C:\Users\LEPALALA\Documents\ENV\Work\KaTeX.htm",
+    "latex", "",
     "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
     "trans", "https://translate.google.com/",
     )
