@@ -51,6 +51,8 @@ Terminal_1(Input) { ; Handles one-word, unique location/url commands
     "latex", "C:\Users\LEPALALA\Documents\ENV\Work\KaTeX.htm",
     "h", "https://www.autohotkey.com/docs/v2/FAQ.htm",
     "trans", "https://translate.google.com/",
+    "duo", "https://www.duolingo.com/",
+    "chess", "https://www.chess.com/play",
     )
     if !(Solos.Has(Input)) ; if it doesn't have corresponding key, it goes onto a next terminal
         return 0
